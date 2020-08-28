@@ -4,17 +4,23 @@ public class TimeTest {
 	public static void main(String[] args) {
 
 		TimeVO t = new TimeVO();
-		
-		t.setHour(0);
-		t.setMinute(0);
+
+		t.setHour(40);
+		t.setMinute(200);
 		t.setSecond(10000);
 		int hour = t.getHour();
 		int minute = t.getMinte();
 		int seconde = t.getSecond();
-		System.out.println(hour+"시"+minute+"분"+seconde+"초");
-		
-	
-		
+		System.out.println(hour + "시" + minute + "분" + seconde + "초");
+
+		t.setHour(22);
+		t.setMinute(100);
+		t.setSecond(10000);
+		int hour2 = t.getHour();
+		int minute2 = t.getMinte();
+		int seconde2 = t.getSecond();
+		System.out.println(hour2 + "시" + minute2 + "분" + seconde2 + "초");
+
 	}
 }
 
@@ -37,12 +43,10 @@ class TimeVO {
 	}
 
 	void setMinute(int minute) {
-		if (minute > 59) {
-			this.minute = minute % 60;
-			this.hour += minute / 60;
-		} else {
-			this.minute = minute;
-		}
+
+		setHour(hour += minute / 60);
+		this.minute = minute % 60;
+
 	}
 
 	int getMinte() {
@@ -50,18 +54,10 @@ class TimeVO {
 	}
 
 	void setSecond(int second) {
-		if (second > 59) {
-			
-			this.second = second % 60;
-			this.minute += second / 60;
-			this.setMinute(minute);
-			this.setHour(hour);
-//			
-			
-		
-		} else {
-			this.second = second;
-		}
+
+		this.second = second % 60;
+		setMinute(minute += second / 60);
+
 	}
 
 	int getSecond() {

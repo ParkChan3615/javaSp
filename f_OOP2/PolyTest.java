@@ -18,8 +18,14 @@ public class PolyTest {
 	
 		Tv[] t = new Tv[]{stv1, stv2, stv3,af1,af2,db1,db2};
 		
+		t[2] = (Tv)stv3;//up-casting
 		Tv t2 = t[3];
+		
+		SmartTv st2 = (SmartTv)t2; //down-casting
 		System.out.println(t2);
+		
+		SmartTv tt = (SmartTv)new Tv();
+		//업케스팅 후 다운케스팅 하는것은 가능하지만 바로 다운케스팅이 불가능하다.
 		
 	
 		
