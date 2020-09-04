@@ -1,15 +1,21 @@
 package Project;
 
+
 public class UserDTO {
 
 	static String id;
 	static String pw;
 	static String gname;
 	static String email;
-	static int phonenumber;
-	static String tear;
+	static String phonenumber;
 	
-	public UserDTO (String id,String pw,String gname,String email,int phonenumber,String tear){
+
+	public UserDTO (String id,String pw,String gname,String email, String phonenumber){
+		this.id = id;
+		this.pw = pw;
+		this.gname = gname;
+		this.email = email;
+		this.phonenumber = phonenumber;
 		
 	}
 
@@ -45,24 +51,18 @@ public class UserDTO {
 		UserDTO.email = email;
 	}
 
-	public static int getPhonenumber() {
+	public static String getPhonenumber() {
 		return phonenumber;
 	}
 
-	public static void setPhonenumber(int phonenumber) {
+	public static void setPhonenumber(String phonenumber) {
 		UserDTO.phonenumber = phonenumber;
 	}
 
-	public static String getTear() {
-		return tear;
-	}
 
-	public static void setTear(String tear) {
-		UserDTO.tear = tear;
-	}
 	@Override
 	public String toString(){
-		return "ID:"+id+"PW"+pw+"Gname"+gname+"Email"+email+"TP"+phonenumber+"Tear"+tear;
+		return "ID:"+id+"PW"+pw+"Gname"+gname+"Email"+email+"TP"+phonenumber;
 	}
 
 }

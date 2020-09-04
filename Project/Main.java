@@ -24,7 +24,7 @@ public class Main {
 
 	static void mainview() {
 		System.out.println("=========================================");
-		System.out.println("=          Over watch 전적 검색                    =");
+		System.out.println("=          아파트관리  프로그램                    =");
 		System.out.println("=========================================");
 
 		System.out.println("1.로그인 \t 2.회원가입");

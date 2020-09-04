@@ -2,8 +2,6 @@ package D_array;
 
 import java.util.Arrays;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
-
 public class Array_02 {
 
 	public static void main(String[] args) {

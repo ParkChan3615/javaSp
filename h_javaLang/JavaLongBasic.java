@@ -1,5 +1,8 @@
 package h_javaLang;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class JavaLongBasic {
 	public static void main(String[] args) {
 		
@@ -88,10 +91,90 @@ public class JavaLongBasic {
 		 
 		 
 		 6.정규식
+		 - 텍스트 데이터에서 원하는 형태의 문장을 찾기 위해 만들어 졌다.
+		 - 정규식 순서
+		   : 패턴정의 
+		     ->Parrern클래스를 이용하여 패턴을 정의한다.
+		     Pattern p = Pattern.compile("[a-z]");
+		     
+		     :텍스트와 비교
+		     -> Matcher클래스를 이용하여 패턴과 텍스트를 비교한다.
+		     Matcher m = p.matcher("text");
+		     
+		     m.matches();
+		     
+		  - 정규식 문법
+		   ^ : 문자열의 시작
+		   $ : 문자열의 끝 
+		   . : 임의의 한문자 ,\는 포함되지않는다.
+		   * : 0개 또는 무한정 있을수 있다.
+		   + : 한개 이상 있을수 있다.
+		   ? : 0개 또는 1개 있을수 있다.
+		   (): 문자열을 하나의 문자로 인지한다.
+		   {}: 반복횟수 지정한다. {3,5} 3번 4번 5번 반복 {4.} 4번 ~ 무한 반복
+		   []: 범위지정할때 사용한다. [abc] a b c 중에 하나
+		   | : OR연산을 수행할때 사용 
+		   \s: 공백문자 
+		   \S: 공백을 제외한 모든문자.
+		   \w: 영어 대문자 또는 소문자 또는 숫자.
+		   \W: 영어 대문자 또는 소문자 또는 숫자 를 제외한 모든문자
+		   \d: 0~9 숫자
+		 
 		 7.컬랙션 프래임워크
 		 */
 		
+		
+//		
+//		Pattern p = Pattern.compile("[a-z]*");
+//		Matcher m = p.matcher("dfasdasfadsf");
+//		System.out.println(m.matches());
+//		if (m.matches()==true){
+//			System.out.println("소문자입니다.");
+//			
+			
+//		String reg = "[a-z]*{2,3}";
+//		System.out.println(Pattern.matches(reg, "ssss"));
+		
+		
+		//1텍스트가 영문자가 3회 반복되고 이후에 숫자가 하나이상으로 구성
+		Pattern ms = Pattern.compile("[a-zA-Z]{3}\\d+");
+		Matcher ms2 =ms.matcher("dfD355666");
+		System.out.println(ms2.matches());
+		//2. 텍스트가 핸드폰 번호 형태인 '숫자 3개- 숫자4개 -
+		String str1 ="[A-Za-z]{3}\\d+";
+		System.out.println(Pattern.matches(str1,"ASd123"));
+		Pattern p2 = Pattern.compile("\\d{3}-\\d{4}-\\d{4}");
+		Matcher ms3 = p2.matcher("010-5316-5120");
+		System.out.println(ms3.matches());
+		
+		//3. 텍스트가 핸드폰 번호로 구성
+		//01 다음 0,1,7,8,9- 0을 제외한 숫자,숫자3개 -숫자4개
+		Pattern p3 = Pattern.compile("^01[0-17-9]-[1-9]\\d{3}-\\d{4}");
+		Matcher ms4 = p3.matcher("010-5316-5120");
+		System.out.println(ms4.matches());
+		
+		//4.텍스타가 주민번호로 구성
+		Pattern p4 = Pattern.compile("\\d{2}([0][0-9]|[1][0-2])([0]|[1-9]|[1-2][0-9]|[3][0-1])-[1-4]\\d{6}");
+		Matcher ms5 = p4.matcher("950618-1352315");
+		System.out.println(ms5.matches());
+		
+		//5 텍스트가 이메일로 구성
+		//시작은 영문자 이어야 하고 특수 기호는 -,_,\,. 4가지가 포함될 수 있다.
+		//@이후 영문자가 1개 7개가 포함될수 있다
+		//.이후 영문자가 2~3개가 포함되어야한다.
+		//.kr 이 없을 수도 하나 존재할 수도 있다.
+		Pattern p5 = Pattern.compile("^[a-zA-Z][a-zA-Z0-9_(-)////(.)]*@\\w{1,}(.)\\w{3}(.kr)?");
+		Matcher ms6 = p5.matcher("yco1234@naver.com.kr");
+		System.out.println(ms6.matches());
+		
+		
+		
+		
+		
+		
+		
+		}
 	}
 	 
 	 
-}
+
