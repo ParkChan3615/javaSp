@@ -9,8 +9,26 @@ public class IServiceImpl implements IServise {
 
 	@Override
 	public String lonIn(Map<String, String> params) {
-		String mem_id = dao.logIn(params);
-		return mem_id;
+	
+		
+		return dao.logIn(params);
 		//오라클 덤프
 	}
+
+
+	@Override
+	public String join(MemberVO mb) {
+		
+		return dao.join(mb);
+	}
+
+
+	@Override
+	public String revise(Map<String, String> params) {
+		// TODO Auto-generated method stub
+		return dao.revise(params);
+	}
+
+
+
 }

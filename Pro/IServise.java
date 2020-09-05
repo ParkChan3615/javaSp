@@ -12,5 +12,9 @@ public interface IServise  {
 	 *@see
 	 */
 	String lonIn(Map<String, String> params);
+	String join(MemberVO mb);
+	String revise(Map<String, String> params);
+
+	
 
 }
